@@ -1,7 +1,4 @@
-from idlelib.iomenu import errors
-from lib2to3.fixes.fix_input import context
 from django.contrib.auth import login,logout
-from django.http import HttpResponse
 from django.shortcuts import render, redirect
 from .forms import GoalForm,TaskForm,IdeaForm
 from .models import Task,Goal,Idea
