@@ -1,0 +1,109 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Goals</title>
+    <link rel="stylesheet" href="{% static 'main1.css' %}">
+</head>
+<body>
+
+         <!-- Navigation -->
+    <nav id="menu">
+        <div id="menu-item" ><a href="/">Task</a></div>
+        <div id="menu-item"><a href="/Ideas/">idea?</a></div>
+        {% if user.is_authenticated %}
+        <div id="menu-item"><a href="/">{{ user.username }}</a></div>
+        <div id="user">
+        <form action="{% url 'taskmanager:logout' %}" method="POST">
+        {% csrf_token %}
+        <input id="menu-item" type="submit" name="action" value="Logout"  />
+
+        </form>
+        {% else %}
+        <div id="menu-item"><a href="/Login/">Login</a></div>
+        {% endif %}
+        </div>
+    </nav>
+    <div class="container">
+        <div class="todo-app">
+            <div class="app-title">
+                <h2>Goals </h2>
+                <i class="fa-solid fa-book-bookmark"></i>
+            </div>
+            <form method="post"  >
+                <div class="row">
+                    {% csrf_token %}
+
+                    <input type="hidden" value="add">
+                    <input type="text" id="todoinput" placeholder="Add a goal" name="name" >
+                    <input type="text" placeholder="description" name="description" id="todoinput">
+                    <div id="tcat">
+                    <select name="category"   >
+                           <option selected>Category</option>
+                           <option value="w" >Work</option>
+                           <option value="hf">Health and Fitness</option>
+                           <option value="e">Education</option>
+                           <option value="p">Personal Development</option>
+                           <option value="h">Home and Family</option>
+                           <option value="s">Social</option>
+                           <option value="f">Finance</option>
+                           <option value="o">Other</option>
+
+                    </select>
+                    </div>
+                    <input type="date" name="end_date" id="todoinputd" >
+                    <input type="hidden" name="user" value="{{ user.id }}">
+                    <input type="submit" name="action" value="save" id="todoinputb">
+                </div>
+            </form>
+        </div>
+    </div>
+    <!--goal card end-->
+    <!--goals -->
+    {% for goal in goals %}
+        <form method="post">
+        {% csrf_token %}
+        <input type="hidden" name="id" value="{{ goal.id }}">
+        <div class="results-summary-container">
+
+
+            <div class="results-summary-container__result">
+                <div class="heading-tertiary">{{ goal.get_category_display }}<input type="submit" name="action" value="x" id="gdel"></div>
+
+                <div class="result-box">
+                    <div class="heading-primary">{{ goal.days_left }} </div>
+                    <p class="result"></p>
+                </div>
+
+                <div class="result-text-box">
+                    <div class="heading-secondary">{{ goal.name }}</div>
+                    <p class="paragraph">
+                        {{ goal.description }}
+                    </p>
+                </div>
+            </div>
+            <div class="results-summary-container__options">
+                <div class="heading-secondary heading-secondary--blue">Tasks</div>
+                <div class="summary-result-options">
+                    <ol>
+                    {% for task in goal.tasks.all %}
+
+                        <li><p id="LI">title:{{ task.title }}</p>  <p id="LI">due: {{ task.due_date }}<p/><p id='LI'>({{ task.days_left }} )</pid></li>
+
+                    {% empty %}
+                        <li>No tasks associated with this goal.</li>
+                    {% endfor %}
+                    </ol>
+
+
+
+
+                </div>
+            </div>
+        </div>
+        </form>
+    {% endfor %}
+    <!--end-->
+</body>
+</html>

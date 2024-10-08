@@ -1,0 +1,84 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="{% static 'main1.css' %}">
+    <title>Todo</title>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav id="menu">
+        <div id="menu-item" ><a href="/Goals">Goals</a></div>
+        <div id="menu-item"><a href="/Ideas/">idea?</a></div>
+        <div id="user">
+        {% if user.is_authenticated %}
+        <div id="menu-item" ><a href="/">{{ user.username }}</a></div>
+
+            <form action="{% url 'taskmanager:logout' %}" method="POST">
+            {% csrf_token %}
+                <input id="menu-item" type="submit" name="action" value="Logout"  />
+
+            </form>
+        {% else %}
+        <div id="menu-item"><a href="/Login/">Login</a></div>
+        {% endif %}
+        </div>
+    </nav>
+
+    <!--task card start-->
+    <div>
+        <h6 >   </h6>
+    </div>
+
+    <div class="container">
+        <div class="todo-app">
+            <div class="app-title">
+                <h2>To-do </h2>
+
+                <i class="fa-solid fa-book-bookmark"></i>
+            </div>
+            <form method="post"  >
+                <div class="row">
+                    {% csrf_token %}
+                    <input type="hidden" value="add">
+                    <input type="text" id="todoinput" placeholder="add your tasks" name="title" required  >
+                    <input type="hidden" name="user" value="{{ user.id }}">
+                    <div id="tcat">
+                    <select name="goal">
+                        <option selected value="">Assign to a goal </option>
+                        {% for goal in goals %}
+                            <option value="{{ goal.id }}" >{{ goal.name }} </option>
+                        {% endfor %}
+                    </select>
+                    </div>
+                    <input name="due_date" type="date" id="todoinputd"   >
+
+                    <input id="todoinputb" type="submit" name="action" value="add" onclick="addTask()" />
+                </div>
+            </form>
+
+
+            <ul id="list-container"  >
+                {% for task in tasks %}
+                    <form method="post">
+                    {% csrf_token %}
+                    <input type="hidden" name="id" value="{{ task.id }}">
+                        <li   data-id="{{ task.id }}" > <p id="LII">title:{{ task.title }}</p><p id="LI"> {% if task.goal %}goal:{{ task.goal }} {% endif %}</p> <p id="LI">due: {{ task.due_date }}({{ task.days_left }} )</p><span  class="delete-btn"><input type="submit" id="del" name="action" value="x"  ></span></li>
+                    </form>
+                {% endfor %}
+
+            </ul>
+
+        </div>
+    </div>
+
+
+
+
+    <script src="{% static 'style.js' %}"></script>
+</body>
+</html>

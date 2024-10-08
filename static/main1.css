@@ -1,0 +1,385 @@
+/*menu*/
+#menu{
+    display: flex;
+    flex-wrap: nowrap;
+    background-color: #3a4ed8;
+    border-radius: 10px;
+    justify-content: space-between;
+    margin: 0% 30% 0% 30%;
+    border: solid;
+    border-color: #7e7a7a;
+
+
+
+}
+#menu-item{
+    margin-right: 1%;
+    margin-left: 2%;
+
+
+}
+a:link, a:visited, a:hover, a:active {
+            text-decoration: none;
+            color: white;
+            font-size: large;
+
+}
+#menu input{
+    background-color:#3a4ed8 ;
+    border: none;
+    cursor: pointer;
+    margin-left: 10px;
+}
+#user{
+    display: flex;
+    flex-direction: row;
+    margin-left: 65px;
+    margin-right: 20px;
+}
+
+/*task---------------------------------------------------------------------------------------*/
+*, *:before, *:after {
+    margin: 0px;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    font-size: 26px;
+
+}
+
+.container {
+    width: 100%;
+    min-height: max-content;
+    background-color: #efeff4;
+    padding: 0px;
+    justify-content: center;
+    align-items: center;
+}
+
+.todo-app {
+    width: 100vw;
+    height: max-content;
+
+    background-color: #ffffff;
+    padding: 0% 5% 5%;
+
+    display: block;
+    flex-direction: column;
+    align-items: left;
+
+
+}
+.app-title {
+    display: flex;
+    gap: 1rem;
+    margin-left: 1%;
+    align-items: center;
+}
+.app-title h2, .app-title i {
+    color: #1b31bf;
+    font-size: 3rem;
+}
+
+.app-title i {
+    font-size: 26px ;
+
+
+}
+
+.row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: #3a4ed8;
+    border-radius: 10px;
+
+}
+#todoinput{
+    width: 40%;
+    border: none;
+    border-color:#3a4ed8;
+    border-right-color: #1316d6;
+
+    border-radius: 10px;
+    outline: none;
+    background-color: #6c7be3;
+    padding: 12px;
+    font-size: 17px;
+    padding-left: 20px;
+    margin-right: 20px;
+    color: #ffffff;
+
+
+
+}
+#todoinputb{
+    width: 5%;
+    border: none;
+    border-color:#3a4ed8;
+    border-right-color: #6c7be3;
+
+    border-radius: 10px;
+    outline: none;
+    background-color: #3a4ed8;
+    padding: 12px;
+    font-size: 18px;
+    padding-left: 10px;
+    margin-right: 10px;
+
+    color: #ffffff;
+    cursor: pointer;
+
+}
+#todoinputd{
+    width: 15%;
+    border: solid;
+    border-color:#3a4ed8;
+    border-right-color: #1316d6;
+
+    border-radius: 10px;
+    outline: none;
+    background-color: #3a4ed8;
+    padding: 12px;
+    font-size: 17px;
+    padding-left: 20px;
+    margin-right: 20px;
+    color: #ffffff;
+    cursor: pointer;
+}
+
+
+
+
+
+ul {
+    list-style: none;
+}
+
+ul li {
+    font-size: 17px;
+    color: #000000;
+    padding: 12px 8px 12px 50px;
+    margin-top: 5px;
+    user-select: none;
+    cursor: pointer;
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+
+
+}
+
+
+ul li::before {
+    position: absolute;
+    content: '';
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    left: 0%;
+    border: 2px solid #0073ff;
+
+
+}
+#LII{
+    margin-right: 150px;
+}
+ul .checked {
+    color: #cacace;
+    text-decoration: line-through;
+}
+ul .checked::before {
+    background-color: #37d92c;
+}
+span {
+    position: absolute;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #050505;
+    font-size: 18px;
+    transition: all .2s ease;
+}
+#goallink{
+    margin-left: 70%;
+    padding-top: 5%;
+}
+#tcat {
+  min-width: 350px;
+}
+#tcat select{
+
+
+  appearance: none;
+  width: 84%;
+  font-size: 1.15rem;
+  padding: 0.675em 6em 0.675em 1em;
+
+
+  background-color: #6c7be3;
+  border:none ;
+
+  border-radius: 10%;
+  color: #ffffff;
+  cursor: pointer;
+}
+#del{
+    border: none;
+    cursor: pointer;
+    outline: none;
+    padding: 15px 50px;
+    position: relative;
+    background-color: transparent;
+    margin-left: 90%;
+
+
+}
+input::-webkit-input-placeholder { /* Chrome, Safari, Opera */
+    color: #ffffff;
+}
+/*goals------------------------------------------------------------------*/
+.results-summary-container {
+  font-family: "Hanken Grotesk", sans-serif;
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  height: 500px ;
+  gap: 6px;
+  margin-bottom: 1%;
+  margin-left: 5%;
+
+
+
+
+}
+
+.heading-primary,
+.heading-secondary,
+.heading-tertiary {
+  color: #ffffff;
+  margin-bottom: 15px;
+  margin-top: 5px;
+
+}
+
+.heading-primary {
+  font-size: 10px;
+  font-weight: 700;
+  background: #ffffff;
+  -webkit-background-clip: text;
+    transform: scale(1.4);
+}
+
+.heading-secondary {
+  font-size: 20px;
+  font-weight: 700;
+  margin-top: 10px;
+
+}
+
+.heading-secondary--blue {
+  color:white;
+}
+
+.heading-tertiary {
+  font-size: 20px;
+  font-weight: 500;
+  margin-bottom: 30px;
+
+  color: hsl(0, 0%, 100%);
+}
+
+.paragraph {
+  font-size: 17px;
+  line-height: 1.6;
+  color: hsl(221, 100%, 96%);
+}
+
+.paragraph-text-box {
+  width: 100%;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.margin-1 {
+  margin-bottom: 10px;
+}
+
+.results-summary-container__result {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    align-items: center;
+    justify-content: center;
+    padding: 20px 10px;
+    border-radius: 2%;
+    background: #3a4ed8;
+    width: 250px;
+
+  .result-box {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  background: #6c7be3;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+
+}
+
+.result {
+  margin-top: -12px;
+  font-size: 14px;
+  font-weight: 400;
+  color: white;
+}
+}
+
+.results-summary-container__options {
+  padding: 0 16px;
+  margin-left: 20px;
+}
+
+.summary-result-options {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+#gdel{
+    border: none;
+    cursor: pointer;
+    outline: none;
+
+
+    background-color: transparent;
+    margin-left: 10px;
+
+
+
+}
+ol li{
+    list-style: none;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+
+
+
+}
+#LI{
+    margin-right: 120px;
+}
